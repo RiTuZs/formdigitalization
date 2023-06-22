@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Onboarding_Form</title>
+  </head>
+  <link rel="stylesheet" href="joining.css">
+  <!-- <link rel="stylesheet" href="form.css"> -->
+  <body>
+    <div>
+        <img src="pictures/copy.png"> 
+      <h1><u>Onboarding Questionnaire</u></h1>
+      <div class="error-text">Error</div>
+      <p>
+        1. What is your primary reason for joining C-DAC ? (You may tick more
+        than one reason)
+      </p>
+      <form>
+        <!-- <label>Job Preferences:</label><br /> -->
+        <input
+          type="checkbox" id="job_profile" name="job_profile" value="attractive_profile" />
+        <label for="job_profile">a. Attractive Job profile</label><br />
+  
+        <input
+          type="checkbox"
+          id="job_location"
+          name="job_location"
+          value="convenient_location"
+        />
+        <label for="job_location">b. Convenient Job location</label><br />
+  
+        <input
+          type="checkbox"
+          id="salary-structure"
+          name="salary-structure"
+          value="attractive-salary"
+        />
+        <label for="salary-structure">c. Attractive Salary Structure</label><br />
+  
+        <input
+          type="checkbox"
+          id="org-credibility"
+          name="org-credibility"
+          value="credibility-fame"
+        />
+        <label for="org-credibility">d. Organization's credibility/fame</label> <br>
+        <!-- <input
+          type="checkbox"
+          id="Better area of work (specify)"
+          name="Better area of work (specify)"
+          value="betterment-work"
+        /> -->
+      <label for="Better area of work (specify)">e. Better area of work (specify)</label>
+      <input
+      type="text"
+      id="Better area of work (specify)" 
+      name="Better area of work (specify)"
+      placeholder="Type Here"/> 
+      <!-- <input
+      type="checkbox"
+      id="Any other reasons.(Please specify)"
+      name="Any other reasons.(Please specify)"
+      value="other-reason"
+    /> -->
+      <label for="Any other reasons.(Please specify)">f. Any other reasons: (Please specify)</label>
+      <input
+      type="text"
+      id="Any other reasons.(Please specify)" 
+      name="Any other reasons.(Please specify)"
+      placeholder="Type Here"/>
+    </form>
+      <p>2.	Have you been previously employed?</p>
+      <form>
+        <input type="radio" id="yes" name="ok" value="oh-yes"/>
+        <label for="yes">yes</label>
+          <input type="radio" id="no" name="ok" value="oh-no"/>
+        <label for="no">no</label> 
+      </form>
+
+    <p>3.	If your answer to the previous question was Yes, what triggered your decision to start looking for new jobs to move on ? (You may tick more than one reason)</p>
+    <form>
+        <label>
+          <input type="checkbox" name="job_move" value="friends_colleague_job_move">
+          a. Your friends/Colleague's job move
+        </label>
+        <br>
+        <label>
+          <input type="checkbox" name="lack_appreciation" value="lack_of_appreciation_of_intellectual_inputs">
+          b. Lack of appreciation of intellectual inputs
+        </label>
+        <br>
+        <label>
+          <input type="checkbox" name="monotonous_profile" value="monotonous_profile">
+          c. Monotonous profile
+        </label>
+        <br>
+        <label>
+          <input type="checkbox" name="lack_recognition" value="lack_of_recognition_of_good_performance">
+          d. Lack of recognition of good performance
+        </label>
+        <br>
+        <label>
+          <input type="checkbox" name="job_taken" value="certain_jobs_taken_away">
+          e. Certain jobs, in which you were interested, were taken away from you
+        </label>
+        <br>
+        <label>
+          <input type="checkbox" name="lack_support" value="lack_of_support_at_critical_times">
+          f. Lack of support at critical times
+        </label>
+      </form>
+        <p>4.	What amount of training do you think you will require to do your job effectively?</p>
+        <input
+        type="text"
+        id="question-4" 
+        name="question:4"
+        value=""
+        placeholder="Type Here"
+      />
+        <p>5.	How much support do you expect to receive from your superiors and peers to do your job efficiently?</p>  
+        <input
+        type="text"
+        id="question-5" 
+        name="question:5"
+        value=""
+        placeholder="Type Here"
+      />
+        <p>6.	Have you received helpful information regarding our products/services, organization history at the time of induction ?</p>
+        <input
+        type="text"
+        id="question-6" 
+        name="question:6"
+        value=""
+        placeholder="Type Here"
+      />
+        <p>7.	Do you expect to receive sufficient and timely feedback about your performance/job from your superiors?</p>
+        <input
+        type="text"
+        id="question-7" 
+        name="question:7"
+        value=""
+        placeholder="Type Here"
+      />
+        <p>8.	What do you expect to gain from C-DAC's performance review process ?</p>
+        <input
+        type="text"
+        id="question-8" 
+        name="question:8"
+        value=""
+        placeholder="Type Here"
+      />
+      <p>9. Do you believe you have been given a proper overview of the Salary, benefits and overall payment structure ?</p>
+      <input
+      type="text"
+      id="question-9" 
+      name="question:9"
+      value=""
+      placeholder="Type Here"
+    />
+      <p>10.	What are your expectations from the kind of supervision that you shall receive here ?</p>
+      <form>
+        <input type="checkbox" name="leadership" value="impartial">
+        <label for="impartial">a. Impartial leadership</label><br>
+    
+        <input type="checkbox" name="knowledge" value="area">
+        <label for="area">b. Knowledge in the area of work</label><br>
+    
+        <input type="checkbox" name="guidance" value="support">
+        <label for="support">c. Guidance/Support on the job</label><br>
+    
+        <input type="checkbox" name="empathy" value="compassionate">
+        <label for="compassionate">d. Empathetic and compassionate</label><br>
+    
+        <input type="checkbox" name="control" value="less">
+        <label for="less">e. Less controlling and supervision</label><br>
+      </form>
+
+    <p>11.	What do you feel shall be the most satisfying aspects about working at C-DAC ?</p>
+    <input
+    type="text"
+    id="question-11" 
+    name="question:11"
+    value=""
+    placeholder="Type Here"
+  />
+    <p>12.	What additional facilities will you appreciate in C-DAC ?</p>
+    <input
+    type="text"
+    id="question-12" 
+    name="question:12"
+    value=""
+    placeholder="Type Here"
+  />
+    <p>13.	What values do you expect to find in C-DAC ?</p>
+    <input
+    type="text"
+    id="question-13" 
+    name="question:13"
+    value=""
+    placeholder="Type Here"
+  />
+    <p>14.	Do you believe you have been given an overview of your career path and progress in this organization ?</p>
+    <input
+    type="text"
+    id="question-14" 
+    name="question:14"
+    value=""
+    placeholder="Type Here"
+  />
+    <p>15.	Where do you see yourself 5 years from now ?</p>
+    <input
+    type="text"
+    id="question-15" 
+    name="question:15"
+    value=""
+    placeholder="Type Here"
+  />
+    <p>16.	 What value addition/contribution do you think you can give C-DAC after your employment here ?</p>
+    <input
+    type="text"
+    id="question-16" 
+    name="question:16"
+    value=""
+    placeholder="Type Here"
+  />
+  <p>17.	Would you recommend working in C-DAC to your friends ?</p>
+  <form action="">
+    <input type="radio" id="myradio" name="myradio" value="yes">
+    <label for="myradio">a. Yes</label>
+    <br>
+    <input type="radio" id="myradio2" name="myradio" value="no">
+    <label for="myradio2">b. No</label>
+    <br>
+    <input type="radio" id="myradio3" name="myradio" value="maybe">
+    <label for="myradio3">c. May Be</label>
+  </form>
+    <label for="Please specify">Please specify</label>
+    <input
+      type="text"
+      id="Please specify" 
+      name="Please specify"
+      value="" placeholder="Type Here"
+    />
+    <p>18.	Notes of Head HR :</p>
+  <textarea name="question:18" id="question-18" type="text" placeholder=" NOTES:  " rows="10" cols="100
+  "></textarea>
+  <br><br>
+  <h2><u>Interview taken by -</u></h2>
+<form class="Interview">
+  <label>Name:</label>
+  <input
+  type="text"
+  id="intvname" 
+  name="intvname"
+  value=""
+/>
+  <label>Signature:</label>
+  <input
+  type="text"
+  id="intvsign" 
+  name="intvsign"
+  value=""
+/>
+<label>Date:</label>
+<input
+type="date" id="intvdate" name="intvdate" value=""/>
+</form>
+  <input type="submit" value="Submit" class="button">
+
+    </div>
+  </body>
+</html>
