@@ -10,13 +10,13 @@
 
 //if user not login so redirect to login page
 
-    // session_start();
-    // include 'db.php';
-    // $unique_id = $_SESSION('unique_id');
-    // if(empty($unique_id)){
-    //     header("Location: login.php");
+    session_start();
+    include_once ('db.php');
+    // $id = $_SESSION('id');
+    // if(empty($id)){
+    //     header("Location: index.php");
     // }
-    // $qry = mysqli_query($conn, "SELECT *  FROM formdata WHERE unique_id = '{$unique_id}'");
+    // $qry = mysqli_query($conn, "SELECT *  FROM formdata WHERE id = '{$id}'");
     // if(mysqli_num_rows($qry) > 0) {
     //     $row = mysqli_fetch_assoc($qry);
     //     if($row){
@@ -27,7 +27,7 @@
     //     }
     // }
 
-
+    mysqli_close($conn);
 ?>
 
 <!DOCTYPE html>
@@ -38,7 +38,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>C-DAC CINE</title>
 </head>
-<link rel="stylesheet" href="base.css">
+<link rel="stylesheet" href="css/base.css">
 <script src="https://kit.fontawesome.com/c4d89a7412.js" crossorigin="anonymous"></script>
 <body>
     <div class="form">
@@ -49,7 +49,7 @@
         </header>
 
         <div class="input">
-        <a href="joining questionnaire.html" class="onboarding">
+        <a href="joining.php" class="onboarding">
             <button class="onb">
                 Onboarding Form
                 <i class="fa-solid fa-arrow-up-right-from-square"></i> 
@@ -58,7 +58,7 @@
         </div> 
         <br> 
         <div class="input">
-            <a href="#" class="exit">
+            <a href="exit.php" class="exit">
                 <button class="ext">
                     Exit Form
                     <i class="fa-solid fa-arrow-up-right-from-square"></i>
@@ -71,13 +71,13 @@
     var button = document.querySelector('.onb');
 
     button.addEventListener('click', function() {
-    window.location.href = 'joining questionnaire.html';
+    window.location.href = 'joining questionnaire.php';
     });
 
     var button = document.querySelector('.ext');
 
     button.addEventListener('click', function() {
-    window.location.href = 'exit.html';
+    window.location.href = 'exit.php';
     });
 
   </script>

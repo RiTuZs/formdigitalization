@@ -78,6 +78,7 @@ p {
 /* Form */
 form {
 margin-left: 20px;
+margin-right: 20px;
 }
 textarea{
     margin-right: 5px;

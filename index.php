@@ -7,15 +7,19 @@ if(isset($_POST['login'])){
 
     $email = $_POST['email'];
     $password = $_POST['password'];
+
   
-    if(!empty($Email) && !empty($Password)){
+    if(!empty($email) && !empty($password)){
+
         $sql=mysqli_query($conn,"SELECT * FROM formdata where email='$email' and password='$password'");
         $row  = mysqli_fetch_array($sql);
+
         if(is_array($row)){
     
             $_SESSION["id"] = $row['id'];
             $_SESSION["email"]= $row['email'];
-            $_SESSION['otp'] = $row['otp'];
+            // $_SESSION['otp'] = $row['otp'];
+
             echo "Success";
     
             header("Location: base.php"); 
@@ -27,7 +31,6 @@ if(isset($_POST['login'])){
         //         header("Location: verify.php");
         //     }
         // }
-        
         else
         {
             echo "Invalid Email ID or Password";
@@ -47,7 +50,7 @@ if(isset($_POST['login'])){
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link rel="stylesheet" href="register.css">
+    <link rel="stylesheet" href="css/register.css">
 </head>
 <body>
     <div class="form">
@@ -55,7 +58,7 @@ if(isset($_POST['login'])){
             <img src="pictures/copy.png">
             <h2>Login Form</h2>
         </header>
-        <form action="" autocomplete="off" method="post">
+        <form action="index.php"  method="post">
             <div class="error-text">Error</div>
             <div class="input">
                 <label for="email">Email ID</label>
@@ -71,6 +74,6 @@ if(isset($_POST['login'])){
             <div class="link">Not signed up? <a href="register.php">Signup Now</a></div>
         </form>
     </div>
-    <script src="login.js"></script>
+    <!-- <script src="js/login.js"></script> -->
 </body>
 </html>

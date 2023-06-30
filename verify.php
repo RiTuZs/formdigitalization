@@ -1,11 +1,12 @@
 <?php
     session_start();
-    include 'db.php';
-    $unique_id = $_SESSION('unique_id');
-    if(empty($unique_id)){
+    include ('db.php');
+    $id = $_SESSION('id');
+    if(empty($id)){
+    // if(!isset($id)){
         header("Location: login.php");
     }
-    $qry = mysqli_query($conn, "SELECT *  FROM formdata WHERE unique_id = '{$unique_id}'");
+    $qry = mysqli_query($conn, "SELECT * FROM formdata WHERE id = '{$id}'");
     if(mysqli_num_rows($qry) > 0) {
         $row = mysqli_fetch_assoc($qry);
         if($row){
@@ -25,14 +26,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Verify</title>
-    <!-- <link rel="stylesheet" href="register.css"> -->
-    <link rel="stylesheet" href="verify.css">
+    <!-- <link rel="stylesheet" href="css/register.css"> -->
+    <link rel="stylesheet" href="css/verify.css">
 </head>
 <body>
     <div class="form">
         <h2 id="verify">Verify Your Account</h2>
         <p>We emailed you the four digit otp code to Enter the code below to confirm your email address..</p>
-        <form action="" autocomplete="off">
+        <form action="verify.php" autocomplete="off">
             <div class="error-text">Error</div>
                 <div class="fields-input">
                     <input type="number" name="otp1" class="otp-field" placeholder="0" min="0" max="9" required onpaste="false">
@@ -45,6 +46,6 @@
                 </div>
         </form>
     </div>
-    <script src="verify.js"></script>
+    <script src="js/verify.js"></script>
 </body>
 </html>

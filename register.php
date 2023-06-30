@@ -1,5 +1,5 @@
 <?php
- include ("signup.php"); 
+ include_once ("signup.php"); 
 ?>
 
 <!DOCTYPE html>
@@ -9,7 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
-    <link rel="stylesheet" href="register.css">
+    <link rel="stylesheet" href="css/register.css">
     <script src="https://kit.fontawesome.com/c4d89a7412.js" crossorigin="anonymous"></script>
 
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -17,18 +17,15 @@
 </head>
 <body>
     <div class="form">
-        <form action="" method="post" enctype="multipart/form-data">
+        <!-- <form action="" method="post" enctype="multipart/form-data"> -->
+        <form action="signup.php" method="post" >
             <img src="pictures/copy.png">
                 <h2>Signup Form</h2>
-            <!-- <div class="header">
-                <img src="/pictures/copy.png">
-                <h2>Signup Form</h2>
-            </div> -->
             <div class="error-text">Error</div>
             <div class="grid-details">
                 <!-- <div id="d" style="position:center; width:50px; height:50px"> -->
                 <div class="input">
-                    <label for="employee-name">Employee's Name: *</label>
+                    <label for="EmployeeName">Employee's Name: *</label>
                     <input type="text" id="employee-name" name="EmployeeName" placeholder=" Your Name" required/>
                 </div>
 
@@ -75,18 +72,14 @@
                     <label for="mode-of-employment">Mode of Employment: *</label>
                     <select id="mode-of-employment" name="modeOfEmployment" required>
                         <option value="select">---Select the mode-of-employment---</option>
-                        <option value="full-time">R</option>
-                        <option value="part-time">CC</option>
-                        <option value="contractor">GBC</option>
-                        <option value="intern">COCP</option>
+                        <option value="R">R</option>
+                        <option value="CC">CC</option>
+                        <option value="GBC">GBC</option>
+                        <option value="COCP">COCP</option>
                     </select>
                 </div>
                 <br>
-            <!-- </div> -->
-
-                <!-- <input type="submit" value="Submit" /> -->
                 
-            <!-- <div class="grid-details"> -->
                 <div class="input" >
                     <label for="password">Password: *</label>
                     <input type="password" name="password" placeholder="Password" required>
@@ -97,12 +90,6 @@
                 </div>    
             </div>
             
-            <!-- <div class="profile-img">
-                <div class="file-upload">
-                    <input type="file" id="image-preview" name="image" class="file-input" oninvalid="this.setCustomValidity('Select an Profile image')" oninput="this.setCustomValidity('')">
-                    <i class="fas fa-user-edit"></i>
-                </div>
-            </div> -->
             
             <div class="submit">
                 <input type="submit" name="submit" value="Signup Now" class="button">
@@ -111,6 +98,6 @@
             <div class="link">Already signed up? <a href="index.php"> Login Now </a></div>
         </form>
     </div>
-    <script src="register.js"></script>
+    <!-- <script src="js/register.js"></script> -->
 </body>
 </html>
