@@ -2,6 +2,7 @@
 
 session_start();
 include_once ('db.php');
+$message = "";
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
@@ -34,15 +35,19 @@ $Overall_Facilities = $_POST['r23c'];
 $Rate_CDAC = $_POST['r24c'];
 $Feedback = $_POST['feedback'];
 
+// if(!empty($Type_of_work_assigned) && !empty($Fairness_of_workload) && !empty($Salary) && !empty($Work_Environment) && !empty($Career_Progression_path) && !empty($HigherEducation_Policy) && !empty($Subject_Training) && !empty($Behavioural_Training) && !empty($Colleagues) && !empty($Supervision) && !empty($Decision_making) && !empty($Employee_Recognition) && !empty($Work_life_balance) && !empty($Working_Hours_Timings)  && !empty($Fun)  && !empty($Communication)  && !empty($Performance_evaluation)  && !empty($Employee_friendly)  && !empty($Concern_for_quality)  && !empty($Administrative_policies)  && !empty($Ease_of_Administrative_procedures)  && !empty($Overall_Facilities)  && !empty($Rate_CDAC)  && !empty($Feedback)) {
+
+    // Insert the form data into the database
+    $query = "INSERT INTO RatingData (Type_of_work_assigned, Fairness_of_workload, Salary, Work_Environment, Career_Progression_path, HigherEducation_Policy, Subject_Training, Behavioural_Training, Colleagues, Supervision, Decision_making, Employee_Recognition, Work_life_balance, Working_Hours_Timings, Fun, Communication, Performance_evaluation, Employee_friendly, Concern_for_quality, Administrative_policies, Ease_of_Administrative_procedures, Overall_Facilities, Rate_CDAC, Feedback) VALUES ('$Type_of_work_assigned', '$Fairness_of_workload', '$Salary', '$Work_Environment', '$Career_Progression_path', '$HigherEducation_Policy', '$Subject_Training', '$Behavioural_Training', '$Colleagues', '$Supervision', '$Decision_making', '$Employee_Recognition', '$Work_life_balance', '$Working_Hours_Timings','$Fun', '$Communication', '$Performance_evaluation', '$Employee_friendly', '$Concern_for_quality', '$Administrative_policies', '$Ease_of_Administrative_procedures', '$Overall_Facilities', '$Rate_CDAC', '$Feedback')";
+
+    $sql=mysqli_query($conn,$query);
 
 
-// Insert the form data into the database
-$query = "INSERT INTO RatingData (Type_of_work_assigned, Fairness_of_workload, Salary, Work_Environment, Career_Progression_path, HigherEducation_Policy, Subject_Training, Behavioural_Training, Colleagues, Supervision, Decision_making, Employee_Recognition, Work_life_balance, Working_Hours_Timings, Fun, Communication, Performance_evaluation, Employee_friendly, Concern_for_quality, Administrative_policies, Ease_of_Administrative_procedures, Overall_Facilities, Rate_CDAC, Feedback) VALUES ('$Type_of_work_assigned', '$Fairness_of_workload', '$Salary', '$Work_Environment', '$Career_Progression_path', '$HigherEducation_Policy', '$Subject_Training', '$Behavioural_Training', '$Colleagues', '$Supervision', '$Decision_making', '$Employee_Recognition', '$Work_life_balance', '$Working_Hours_Timings','$Fun', '$Communication', '$Performance_evaluation', '$Employee_friendly', '$Concern_for_quality', '$Administrative_policies', '$Ease_of_Administrative_procedures', '$Overall_Facilities', '$Rate_CDAC', '$Feedback')";
-
-$sql=mysqli_query($conn,$query);
-
-
-    echo "Thank You!! Data saved successfully.";
+    $message = "Thank You!! Data saved successfully.";
+// }
+// else {
+//  $message = "All input Fields are Required!";
+// }
     
 }
 

@@ -1,31 +1,23 @@
 <?php
 
-// session_start();
-// include 'connector.php';
+session_start();
+include_once ('db.php');
 
-// $id_check=$_SESSION['id'];
-// if(!isset($id_check)){
-//     header("Location: index.php");
-// }
+$id_check=$_SESSION['id'];
+if(!isset($id_check)){
+    header("Location: index.php");
+}
 
-//if user not login so redirect to login page
-
-    session_start();
-    include_once ('db.php');
-    // $id = $_SESSION('id');
-    // if(empty($id)){
-    //     header("Location: index.php");
-    // }
-    // $qry = mysqli_query($conn, "SELECT *  FROM formdata WHERE id = '{$id}'");
-    // if(mysqli_num_rows($qry) > 0) {
-    //     $row = mysqli_fetch_assoc($qry);
-    //     if($row){
-    //         $_SESSION['verification_status'] = $row['verification_status'];
-    //         if($row['verification_status'] != 'Verified'){
-    //             header("Location: verify.php");
-    //         }
-    //     }
-    // }
+    $qry = mysqli_query($conn, "SELECT *  FROM formdata WHERE id = '{$id_check}'");
+    if(mysqli_num_rows($qry) > 0) {
+        $row = mysqli_fetch_assoc($qry);
+        if($row){
+            $_SESSION['verification_status'] = $row['verification_status'];
+            if($row['verification_status'] != 'Verified'){
+                header("Location: verify.php");
+            }
+        }
+    }
 
     mysqli_close($conn);
 ?>
@@ -40,6 +32,10 @@
 </head>
 <link rel="stylesheet" href="css/base.css">
 <script src="https://kit.fontawesome.com/c4d89a7412.js" crossorigin="anonymous"></script>
+        <!-- For Error -->
+        <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> -->
 <body>
     <div class="form">
         <header>

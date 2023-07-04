@@ -2,6 +2,7 @@
 
 session_start();
 include_once ('db.php');
+$message = "";
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
@@ -92,11 +93,11 @@ foreach($chb8 as $chk8)
 
 $suggestionToImprove = $_POST['suggestion'];
 
-$chb9= $_POST['values'];
-$Values="";  
+$chb9= $_POST['valuesfound'];
+$valuesfound="";  
 foreach($chb9 as $chk9)  
    {  
-      $Values .= $chk9." , ";  
+      $valuesfound .= $chk9." , ";  
    }
 
 $chb10= $_POST['success'];
@@ -115,18 +116,22 @@ $Interviewer = $_POST['intvname'];
 $Signature = $_POST['intvsign'];
 $Date = $_POST['intvdate'];
 
+if(!empty($workPeriodFrom) && !empty($workPeriodTo) && !empty($triggerMoveon) && !empty($trainingRating) && !empty($supportRating) && !empty($feedbackRating) && !empty($satisfiedRating) && !empty($facilitiesRating) && !empty($AreasofImprovement) && !empty($NewOffer) && !empty($LookforComing) && !empty($SatisfyingAspect) && !empty($AdditionalFacility) && !empty($DissatisfyingAspect)  && !empty($suggestionToImprove)  && !empty($valuesfound)  && !empty($requireForSucceed)  && !empty($recommend)  && !empty($HRnote)) {
 
-// Insert the form data into the database
-$query = "INSERT INTO ExitData (workPeriodFrom, workPeriodTo,primaryLeavingReason, betterarea, otherreason, triggerMoveon, specify,  trainingRating, trainingComments, supportRating, supportComments, feedbackRating, feedbackComments, satisfiedRating, satisfiedComments, facilitiesRating, facilitiesComments, AreasofImprovement, ImprovementComments, NewOffer, NewOfferComments, LookforComing, LookforComingComments, SatisfyingAspect, AdditionalFacility, DissatisfyingAspect, suggestionToImprove, requireForSucceed, recommend, recommendComments, HRnote, Interviewer, Signature, Date) VALUES ('$workPeriodFrom' , '$workPeriodTo' , '$primaryLeavingReason' , '$betterarea' , '$otherreason' , '$triggerMoveon', '$specify', '$trainingRating' , '$trainingComments' , '$supportRating' , '$supportComments' , '$feedbackRating' , '$feedbackComments' , '$satisfiedRating' , '$satisfiedComments' , '$facilitiesRating' , '$facilitiesComments' , '$AreasofImprovement' , '$ImprovementComments' , '$NewOffer' , '$NewOfferComments' , '$LookforComing' , '$LookforComingComments' , '$SatisfyingAspect' , '$AdditionalFacility' , '$DissatisfyingAspect' , '$suggestionToImprove' , '$requireForSucceed' , '$recommend' , '$recommendComments' , '$HRnote' , '$Interviewer' , '$Signature' , '$Date')";
+      // Insert the form data into the database
+      $query = "INSERT INTO ExitData (workPeriodFrom, workPeriodTo,primaryLeavingReason, betterarea, otherreason, triggerMoveon, specify,  trainingRating, trainingComments, supportRating, supportComments, feedbackRating, feedbackComments, satisfiedRating, satisfiedComments, facilitiesRating, facilitiesComments, AreasofImprovement, ImprovementComments, NewOffer, NewOfferComments, LookforComing, LookforComingComments, SatisfyingAspect, AdditionalFacility, DissatisfyingAspect, suggestionToImprove, valuesfound, requireForSucceed, recommend, recommendComments, HRnote, Interviewer, Signature, Date) VALUES ('$workPeriodFrom' , '$workPeriodTo' , '$primaryLeavingReason' , '$betterarea' , '$otherreason' , '$triggerMoveon', '$specify', '$trainingRating' , '$trainingComments' , '$supportRating' , '$supportComments' , '$feedbackRating' , '$feedbackComments' , '$satisfiedRating' , '$satisfiedComments' , '$facilitiesRating' , '$facilitiesComments' , '$AreasofImprovement' , '$ImprovementComments' , '$NewOffer' , '$NewOfferComments' , '$LookforComing' , '$LookforComingComments' , '$SatisfyingAspect' , '$AdditionalFacility' , '$DissatisfyingAspect' , '$suggestionToImprove' , '$valuesfound', '$requireForSucceed' , '$recommend' , '$recommendComments' , '$HRnote' , '$Interviewer' , '$Signature' , '$Date')";
 
-$sql=mysqli_query($conn,$query);
-
-
-    echo "Data saved successfully.";
-    header("Location: form.php"); 
-    
+      $sql=mysqli_query($conn,$query);
+   
+   
+      $message = "Data saved successfully.";
+         header("Location: form.php"); 
+}
+else {
+   $message = "All input Fields are Required!";
 }
 
 
+}
 mysqli_close($conn);
 ?>

@@ -1,12 +1,14 @@
-
 <?php
 
 session_start();
 include 'db.php';
+
+$message = "";
+
 if(isset($_POST['login'])){
 
     $email = $_POST['email'];
-    $password = $_POST['password'];
+    $password = md5($_POST['password']);
 
   
     if(!empty($email) && !empty($password)){
@@ -18,26 +20,19 @@ if(isset($_POST['login'])){
     
             $_SESSION["id"] = $row['id'];
             $_SESSION["email"]= $row['email'];
-            // $_SESSION['otp'] = $row['otp'];
+            $_SESSION['otp'] = $row['otp'];
 
-            echo "Success";
+            $message = "Success";
     
             header("Location: base.php"); 
         }
-
-        // if($row){
-        //     $_SESSION['verification_status']= $row['verification_status'];
-        //     if($row['verification_status'] != 'verified'){
-        //         header("Location: verify.php");
-        //     }
-        // }
         else
         {
-            echo "Invalid Email ID or Password";
+            $message = "Invalid Email ID or Password";
         }
     }
     else{
-        echo "All Fields Are Required";
+        $message = "All Fields Are Required";
     }
 }
 
@@ -51,6 +46,10 @@ if(isset($_POST['login'])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link rel="stylesheet" href="css/register.css">
+        <!-- For Error -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
     <div class="form">
@@ -59,7 +58,20 @@ if(isset($_POST['login'])){
             <h2>Login Form</h2>
         </header>
         <form action="index.php"  method="post">
-            <div class="error-text">Error</div>
+        <?php if($message != "") {?>
+
+            <div class="alert alert-danger alert-dismissible" role="alert">
+                <strong>
+                    <?php
+                        echo $message;
+                    ?>
+                </strong>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <?php } ?>
+
             <div class="input">
                 <label for="email">Email ID</label>
                 <input type="email" name="email" placeholder="abcd@gmail.com" required>

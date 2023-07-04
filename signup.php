@@ -2,10 +2,17 @@
 
 session_start();
 include_once ('db.php');
+$message = "";
 
 if (!$conn) {
         die("Connection failed: " . mysqli_connect_error());
     }
+
+$message = ""; 
+
+if(isset($_SESSION['id'])){
+    header("Location: base.php");
+}
 
 if(isset($_POST['submit'])) {
     $employee_name = $_POST['EmployeeName'];
@@ -16,70 +23,61 @@ if(isset($_POST['submit'])) {
     $designation = $_POST['designation'];
     $work_period_start = $_POST['WorkPeriodStart'];
     $mode_of_employment = $_POST['modeOfEmployment'];
-    $password = $_POST['password'];   //md5 give security to the password 
-    $cpassword = $_POST['cpassword'];
-    // $otp = 1234;
-    // $otp = '';
+    $password = md5($_POST['password']);   //md5 give security to the password 
+    $cpassword = md5($_POST['cpassword']);
     $verification_status = '0';
-    //insert data into table
-    // $query = "INSERT INTO formdata (employee_name, employee_id, email, phone, department, designation, work_period_start, mode_of_employment, password, otp, verification_status) VALUES ('$employee_name', '$employee_id', '$email', '$phone', '$department', '$designation', '$work_period_start', '$mode_of_employment', '$password', '$otp', '$verification_status')";
-
-    // $query = "INSERT INTO formdata (employee_name, employee_id, email, phone, department, designation, work_period_start, mode_of_employment, password, verification_status) VALUES ('$employee_name', '$employee_id', '$email', '$phone', '$department', '$designation', '$work_period_start', '$mode_of_employment', '$password', '$verification_status')";
 
     //checking field are not empty
     if(!empty($employee_name) && !empty($employee_id) && !empty($email) && !empty($phone) && !empty($department) && !empty($designation) && !empty($work_period_start) && !empty($mode_of_employment) && !empty($password) && !empty($cpassword)) {
 
         if($password == $cpassword){
 
+            $user_email = trim($email);
             if(filter_var($email,FILTER_VALIDATE_EMAIL)){
-        //         //checking email is already exists!
+
+                //checking email is already exists!
                 $sql1 = mysqli_query($conn,"SELECT email FROM formdata WHERE email='{$email}'");
-                // if(mysqli_num_rows($sql) > 0){
+   
                 if(mysqli_num_rows($sql1) > 0){
                     
-                    echo "$email ~ Already Exists";
+                    $message = "$email ~ Already Exists";
                 }
                 else {
-                    $random_id = rand(time(),10000000);   //create a user unique id
-                    $otp = mt_rand(1111,9999);     //creating 4 digits otp
+                    $otp = rand(1111,9999);     //creating 4 digits otp
+                    $_SESSION['otp'] = $otp;
+                    $_SESSION['email'] = $email;
+                    require "Mail/phpmailer/PHPMailerAutoload.php";
+                    $mail = new PHPMailer;
 
-                    $query = "INSERT INTO formdata (employee_name, employee_id, email, phone, department, designation, work_period_start, mode_of_employment, password, otp, verification_status) VALUES ('$employee_name', '$employee_id', '$email', '$phone', '$department', '$designation', '$work_period_start', '$mode_of_employment', '$password', '$otp', '$verification_status')";
-                    $sql=mysqli_query($conn,$query);
+                    $mail->isSMTP();
+                    $mail->Host='smtp.gmail.com';
+                    $mail->Port=587;
+                    $mail->SMTPAuth=true;
+                    $mail->SMTPSecure='tls';
 
-        //             // $insertResult=mysqli_query($conn,$query);
-                    if($query){
-                        $sql2 = mysqli_query($conn , "SELECT * FROM formdata WHERE email = '{$email}'");
-                        if (mysqli_num_rows($sql2)>0){
-                            $row = mysqli_fetch_assoc($sql2);   //fetching data
-                            $_SESSION['id'] = $row['id'];
-                            $_SESSION['email'] = $row['email'];
-                            $_SESSION['otp'] = $row['otp'];
+                    $mail->Username='sukanya.ss.ritu@gmail.com';
+                    $mail->Password='xjhqrklcikwldbsr';
 
-        //                     //lets start mail function
-        //                     //smtp configuration
-                            
-                            // if($otp){
-                            //     $reciever = $email;
-                            //     $subject = "From: $employee_name <$email>";
-                            //     $body = "Name "." $employee_name \n Email "." $email \n "." $otp";
-                            //     $sender = "From: sukanya.ss.ritu@gmail.com";   //email sender name make sure write your email you can put the xampp mail file
+                    $mail->setFrom('sukanya.ss.ritu@gmail.com', 'OTP Verification');
+                    $mail->addAddress($_POST["email"]);
 
-                            //     if(mail($reciever,$subject,$body,$sender)){
-                            //         echo "Success";
-                            //         // echo "Record added successfully.";
-                            //     }
-                            //     else{
-                            //         echo "Email Problem!" . mysqli_error($conn);
-                            //     }
-                            // }
-        //                 //email function end
-                        }
-                        else {
-                            echo "Something Went Wrong!";
-                        }
+                    $mail->isHTML(true);
+                    $mail->Subject="Your Verify Code";
+                    $mail->Body="<p>Dear $employee_name, </p> 
+                    <h3>Your verify OTP code is $otp <br></h3>
+                    <br><br>
+                    <p>With regards,</p>
+                    <p>C-DAC CINE.</p>";
+
+                    if(!$mail->send()){
+                        $message = "Registration failed, Invalid Email!!";
                     }
                     else {
-                        echo "Something Went Wrong!";
+                        $query = mysqli_query($conn, "INSERT INTO formdata (employee_name, employee_id, email, phone, department, designation, work_period_start, mode_of_employment, password, otp, verification_status) VALUES ('$employee_name', '$employee_id', '$email', '$phone', '$department', '$designation', '$work_period_start', '$mode_of_employment', '$password', '$otp', '$verification_status')");
+                        
+                        // $message = "Something Went Wrong!";
+
+                        header("Location: verify.php");
                     }
                                             
                 }
@@ -87,24 +85,24 @@ if(isset($_POST['submit'])) {
             }
             
             else{
-                echo "$email ~ This is not a valid Email";
+                $message = "$email ~ This is not a valid Email";
             }
             
                     
         }
         
         else{
-            echo "Password does not match";
+            $message = "Password does not match";
         }  
     }
         // if email is valid
     
         
     else {
-        echo "All input Fields are Required!";
+        $message = "All input Fields are Required!";
     }
 
-    echo "Record added successfully.";
+    // $message = "Record added successfully.";
 }
 
 mysqli_close($conn);

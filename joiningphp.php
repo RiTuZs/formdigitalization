@@ -2,6 +2,7 @@
 
 session_start();
 include_once ('db.php');
+$message = "";
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
@@ -69,7 +70,7 @@ $query = "INSERT INTO JoiningData (primaryLeavingReason, betterarea, otherreason
 $sql=mysqli_query($conn,$query);
 
 
-    echo "Thank You!! Data saved successfully."; 
+$message = "Thank You!! Data saved successfully."; 
     
 }
 

@@ -14,14 +14,32 @@
 
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
+    <!-- For Error -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
     <div class="form">
         <!-- <form action="" method="post" enctype="multipart/form-data"> -->
-        <form action="signup.php" method="post" >
+        <form action="" method="post" >
             <img src="pictures/copy.png">
                 <h2>Signup Form</h2>
-            <div class="error-text">Error</div>
+
+                <?php if($message != "") {?>
+
+                    <div class="alert alert-danger alert-dismissible" role="alert">
+                        <strong>
+                            <?php
+                                echo $message;
+                            ?>
+                        </strong>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <?php } ?>
+
             <div class="grid-details">
                 <!-- <div id="d" style="position:center; width:50px; height:50px"> -->
                 <div class="input">
@@ -50,7 +68,7 @@
             
                 <div class="input">
                     <label for="phone">Phone Number: *</label>
-                    <input type="phone" name="phone" placeholder="Phone Number" required pattern="[0-9]{11}" oninvalid="this.setCustomValidity('Enter 11 Digits Number')" oninput="this.setCustomValidity('')" >
+                    <input type="phone" name="phone" placeholder="Phone Number" required pattern="[0-9]{10}" oninvalid="this.setCustomValidity('Enter 10 Digits Number')" oninput="this.setCustomValidity('')" >
                 </div>  
     
                 <div class="input">               

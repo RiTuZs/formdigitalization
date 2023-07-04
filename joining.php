@@ -9,6 +9,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Onboarding_Form</title>
+          <!-- For Error -->
+          <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   </head>
   <link rel="stylesheet" href="css/joining.css">
   <!-- <link rel="stylesheet" href="css/form.css"> -->
@@ -16,7 +20,19 @@
     <div>
         <img src="pictures/copy.png"> 
       <h1><u>Onboarding Questionnaire</u></h1>
-      <div class="error-text">Error</div>
+      <?php if($message != "") {?>
+
+<div class="alert alert-danger alert-dismissible" role="alert">
+    <strong>
+        <?php
+            echo $message;
+        ?>
+    </strong>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<?php } ?>
       <form action="joining.php" method="post">
       <p>
           1. What is your primary reason for joining C-DAC ? (You may tick more

@@ -16,6 +16,10 @@
           display: inline;
         }
       </style> -->
+            <!-- For Error -->
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
 </head>
 
@@ -25,7 +29,19 @@
     <div>
         <img src="pictures/copy.png"> 
         <h1><u>Exit Interview Questionnaire</u></h1>
-        <div class="error-text">Error</div>
+        <?php if($message != "") {?>
+
+<div class="alert alert-danger alert-dismissible" role="alert">
+    <strong>
+        <?php
+            echo $message;
+        ?>
+    </strong>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<?php } ?>
         <!-- <div class="form"> -->
         <form action="exit.php" method="post">
         <div class="class01">
@@ -316,11 +332,11 @@
                     <p name="q15">15. What are the values you found in C-DAC?</p>
                     <!-- <form class="values"> -->
                         <label>a.</label>
-                        <input type="text" id="blank00001" name="values[]">
+                        <input type="text" id="blank00001" name="valuesfound[]">
                         <label>b.</label>
-                        <input type="text" id="blank00002" name="values[]">
+                        <input type="text" id="blank00002" name="valuesfound[]">
                         <label>c.</label>
-                        <input type="text" id="blank00003" name="values[]">
+                        <input type="text" id="blank00003" name="valuesfound[]">
                     <!-- </form> -->
 
                     <p name="q16">16. Based on your experience, what do you think are required for an employee to succeed in C-DAC?
@@ -354,7 +370,7 @@
                         <input type="text" id="comment08" name="specify1" placeholder="Type Here">
                     <!-- </form> -->
                     <p name="q18">18.	Notes of Head HR :</p>
-                    <textarea name="HRnote" id="question-18" type="text" placeholder=" NOTES:  " rows="10" cols="103"></textarea>
+                    <textarea name="HRnote" id="question-18" type="text" placeholder=" NOTES:  " rows="10" cols="97"></textarea>
             <!-- </form> -->
                     <br><br>
                     <h2><u>Exit Interview taken by -</u></h2>
@@ -384,7 +400,7 @@
         </form>
                     
     </div>
-    <script src="JS/exitform.js"></script>
+    <!-- <script src="JS/exitform.js"></script> -->
 </body>
 
 </html>
