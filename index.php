@@ -5,6 +5,10 @@ include 'db.php';
 
 $message = "";
 
+if(isset($_SESSION['id'])){
+    header("Location: base.php");
+}
+
 if(isset($_POST['login'])){
 
     $email = $_POST['email'];
@@ -22,7 +26,7 @@ if(isset($_POST['login'])){
             $_SESSION["email"]= $row['email'];
             $_SESSION['otp'] = $row['otp'];
 
-            $message = "Success";
+            // $message = "Success";
     
             header("Location: base.php"); 
         }

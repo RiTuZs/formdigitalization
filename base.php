@@ -19,7 +19,7 @@ if(!isset($id_check)){
         }
     }
 
-    mysqli_close($conn);
+    // mysqli_close($conn);
 ?>
 
 <!DOCTYPE html>
