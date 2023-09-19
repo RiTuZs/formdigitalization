@@ -64,7 +64,7 @@ if(isset($_POST['submit'])) {
                     $mail->isHTML(true);
                     $mail->Subject="Your Verify Code";
                     $mail->Body="<p>Dear $employee_name, </p> 
-                    <h3>Your verify OTP code is $otp <br></h3>
+                    <h3>Your verification OTP code is $otp <br></h3>
                     <br><br>
                     <p>With regards,</p>
                     <p>C-DAC CINE.</p>";
