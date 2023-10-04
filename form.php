@@ -1,20 +1,24 @@
+<!-- This PHP code includes the 'formphp.php' file, which contains PHP logic. It then defines an HTML form for rating various aspects of C-DAC and collecting feedback. The form submits data to the 'form.php' script using the POST method. Users can rate different aspects using radio buttons on a scale of 1 to 5 and provide additional comments or feedback. -->
+
+
+
 <?php
- include_once ("formphp.php"); 
+// Include the 'formphp.php' file for PHP code
+include_once ("formphp.php"); 
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- HTML head section with metadata and CSS/JS includes -->
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Page title -->
     <title>Exit Form Part-02</title>
-  <link rel="stylesheet" href="css/form.css">
-<!-- <script src="JS/exitform.js"></script> -->
-        <!-- For Error -->
-        <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> -->
+
+<!-- Link to external CSS file -->
+<link rel="stylesheet" href="css/form.css">
 </head> 
 <body>
   <div class="form">
@@ -22,7 +26,9 @@
     <img src="pictures/copy.png">
       <h2>Please rate the following aspects of C-DAC: </h2>
 
+    <!-- creare a table -->
     <table>
+      <!-- heading of that table -->
       <thead>
         <tr>
           <th><b>(On rating scale, 5 measures most and 1 is least)</b></th>
@@ -34,6 +40,7 @@
         </tr>
       </thead>
       <tbody>
+        <!-- Example rating scale for different aspects -->
         <tr>
           <td>Type of work assigned/performed</td>
           <td><input type="radio" name="r2c" value="1"></td>
@@ -42,6 +49,7 @@
           <td><input type="radio" name="r2c" value="4"></td>
           <td><input type="radio" name="r2c" value="5"></td>
         </tr>
+        <!-- Add similar rows for other aspects -->
         <tr>
           <td>Fairness/Quantum of workload</td>
           <td><input type="radio" name="r3c" value="1"></td>
@@ -226,5 +234,3 @@
   </div>
 </body>
 </html>
-
-  

@@ -1,19 +1,27 @@
+<!-- This code appears to be an HTML registration form that allows users to sign up. It includes form fields for user details, displays error messages if any, and provides a link to the login page. It also includes an inclusion of an external PHP file named 'signup.php', but without its content, it's challenging to provide specific comments on its functionality. -->
+
+
 <?php
- include_once ("signup.php"); 
+include_once("signup.php"); // Include an external PHP file named 'signup.php'. It's assumed to contain relevant code.
+
+// HTML structure begins 
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Metadata and CSS/JS includes -->
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Page title -->
     <title>Register</title>
+
+    <!-- Link to external CSS file -->
     <link rel="stylesheet" href="css/register.css">
     <script src="https://kit.fontawesome.com/c4d89a7412.js" crossorigin="anonymous"></script>
 
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
     <!-- For Error -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
@@ -21,17 +29,18 @@
 </head>
 <body>
     <div class="form">
-        <!-- <form action="" method="post" enctype="multipart/form-data"> -->
+        <!-- Registration form -->
         <form action="" method="post" >
             <img src="pictures/copy.png">
                 <h2>Signup Form</h2>
 
                 <?php if($message != "") {?>
+                    <!-- Display an error message if the 'message' variable is not empty -->
 
                     <div class="alert alert-danger alert-dismissible" role="alert">
                         <strong>
                             <?php
-                                echo $message;
+                                echo $message; // Display the error message.
                             ?>
                         </strong>
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -40,21 +49,13 @@
                     </div>
                     <?php } ?>
 
+            <!-- Input fields for user registration -->
+
             <div class="grid-details">
-                <!-- <div id="d" style="position:center; width:50px; height:50px"> -->
                 <div class="input">
                     <label for="EmployeeName">Employee's Name: *</label>
                     <input type="text" id="employee-name" name="EmployeeName" placeholder=" Your Name" required/>
                 </div>
-
-                <!-- <div class="input">
-                    <label>First Name</label>
-                    <input type="text" name="fname" placeholder="First Name" required pattern="[a-zA-Z'-'\s]">
-                </div>
-                <div class="input">
-                    <label>Last Name</label>
-                    <input type="text" name="lname" placeholder="Last Name" required pattern="[a-zA-Z'-'\s]">
-                </div> -->
 
                 <div class="input">
                     <label for="employee-id">Employee ID: </label>
@@ -110,12 +111,11 @@
             
             
             <div class="submit">
-                <input type="submit" name="submit" value="Signup Now" class="button">
+                <input type="submit" name="submit" value="Signup Now" class="button"> <!-- Submit button for the form -->
             </div>    
 
-            <div class="link">Already signed up? <a href="index.php"> Login Now </a></div>
+            <div class="link">Already signed up? <a href="index.php"> Login Now </a></div> <!-- Link to Login page -->
         </form>
     </div>
-    <!-- <script src="js/register.js"></script> -->
 </body>
 </html>

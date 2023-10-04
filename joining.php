@@ -1,31 +1,46 @@
+<!-- This PHP and HTML code creates an onboarding questionnaire form. It includes various questions and fields for users to provide their responses. The form also includes error handling to display messages and uses Bootstrap for styling. When submitted, the form data is likely processed by the "joining.php" script. -->
+
+
 <?php
- include_once ("joiningphp.php"); 
+ include_once ("joiningphp.php"); // Include an external PHP file named 'joiningphp.php'.
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <!-- Meta tags for character set and viewport -->
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Page title -->
     <title>Onboarding_Form</title>
-          <!-- For Error -->
-          <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    
+    <!-- For Error -->
+    <!-- Include Bootstrap CSS library -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <!-- Include jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <!-- Include Bootstrap JavaScript library -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   </head>
+
+  <!-- Link to external CSS file -->
   <link rel="stylesheet" href="css/joining.css">
-  <!-- <link rel="stylesheet" href="css/form.css"> -->
+
+  <!-- Body section begins -->
   <body>
     <div>
+        <!-- C-DAC logo -->
         <img src="pictures/copy.png"> 
-      <h1><u>Onboarding Questionnaire</u></h1>
+        <!-- Heading for the onboarding questionnaire -->
+        <h1><u>Onboarding Questionnaire</u></h1>
       <?php if($message != "") {?>
-
-<div class="alert alert-danger alert-dismissible" role="alert">
+          <!-- Display an error message if the 'message' variable is not empty -->
+          <div class="alert alert-danger alert-dismissible" role="alert">
     <strong>
         <?php
-            echo $message;
+            echo $message; // Display the error message.
         ?>
     </strong>
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -33,21 +48,26 @@
     </button>
 </div>
 <?php } ?>
-      <form action="joining.php" method="post">
-      <p>
+      
+    <!-- Onboarding questionnaire form -->
+    <form action="joining.php" method="post">
+  
+        <!-- Question 1 -->
+        <p>
           1. What is your primary reason for joining C-DAC ? (You may tick more
           than one reason)
         </p>
-        <!-- <form> -->
+        
           <!-- <label>Job Preferences:</label><br /> -->
           <input
             type="checkbox" id="job_profile" name="qn1[]" value="attractive_Jobprofile" />
           <label for="job_profile">a. Attractive Job profile</label><br />
+          <!-- ... (Other options for Question 1) ... -->
           <input
-            type="checkbox"
-            id="job_location"
-            name="qn1[]"
-            value="convenient_location"
+          type="checkbox"
+          id="job_location"
+          name="qn1[]"
+          value="convenient_location"
           />
           <label for="job_location">b. Convenient Job location</label><br />
     
@@ -80,17 +100,19 @@
         id="Any other reasons.(Please specify)" 
         name="otherreason"
         placeholder="Type Here"/>
-
+        
+        <!-- Question 2 -->
         <p>2.	Have you been previously employed?</p>
-        <!-- <form> -->
+        
           <input type="radio" id="yes" name="qn2" value="yes"/>
           <label for="yes">yes</label>
             <input type="radio" id="no" name="qn2" value="no"/>
           <label for="no">no</label> 
-        <!-- </form> -->
-  
+        
+
+        <!-- Question 3 -->
       <p>3.	If your answer to the previous question was Yes, what triggered your decision to start looking for new jobs to move on ? (You may tick more than one reason)</p>
-      <!-- <form> -->
+      
           <label>
             <input type="checkbox" name="qn3[]" value="friends_colleague_job_move">
             a. Your friends/Colleague's job move
@@ -120,7 +142,8 @@
             <input type="checkbox" name="qn3[]" value="lack_of_support_at_critical_times">
             f. Lack of support at critical times
           </label>
-        <!-- </form> -->
+        
+        <!-- Question 4 -->
           <p>4.	What amount of training do you think you will require to do your job effectively?</p>
           <input
           type="text"
@@ -129,6 +152,8 @@
           value=""
           placeholder="Type Here"
         />
+
+        <!-- Question 5 -->
           <p>5.	How much support do you expect to receive from your superiors and peers to do your job efficiently?</p>  
           <input
           type="text"
@@ -137,6 +162,8 @@
           value=""
           placeholder="Type Here"
         />
+
+        <!-- Question 6 -->
           <p>6.	Have you received helpful information regarding our products/services, organization history at the time of induction ?</p>
           <input
           type="text"
@@ -145,6 +172,8 @@
           value=""
           placeholder="Type Here"
         />
+
+        <!-- Question 7 -->
           <p>7.	Do you expect to receive sufficient and timely feedback about your performance/job from your superiors?</p>
           <input
           type="text"
@@ -153,6 +182,8 @@
           value=""
           placeholder="Type Here"
         />
+
+        <!-- Question 8 -->
           <p>8.	What do you expect to gain from C-DAC's performance review process ?</p>
           <input
           type="text"
@@ -161,6 +192,8 @@
           value=""
           placeholder="Type Here"
         />
+
+        <!-- Question 9 -->
         <p>9. Do you believe you have been given a proper overview of the Salary, benefits and overall payment structure ?</p>
         <input
         type="text"
@@ -169,8 +202,10 @@
         value=""
         placeholder="Type Here"
       />
+
+      <!-- Question 10 -->
         <p>10.	What are your expectations from the kind of supervision that you shall receive here ?</p>
-        <!-- <form> -->
+        
           <input type="checkbox" id="impartial" name="qn10[]" value="impartial_Leadership">
           <label for="impartial">a. Impartial leadership</label><br>
       
@@ -185,8 +220,9 @@
       
           <input type="checkbox" id="less" name="qn10[]" value="lessControlling_supervision">
           <label for="less">e. Less controlling and supervision</label><br>
-        <!-- </form> -->
+        
   
+        <!-- Question 11 -->
         <p>11.	What do you feel shall be the most satisfying aspects about working at C-DAC ?</p>
         <input
         type="text"
@@ -195,6 +231,7 @@
         value=""
         placeholder="Type Here"/>
 
+        <!-- Question 12 -->
         <p>12.	What additional facilities will you appreciate in C-DAC ?</p>
         <input
         type="text"
@@ -203,6 +240,7 @@
         value=""
         placeholder="Type Here"/>
 
+        <!-- Question 13 -->
         <p>13.	What values do you expect to find in C-DAC ?</p>
         <input
         type="text"
@@ -211,6 +249,8 @@
         value=""
         placeholder="Type Here"
       />
+
+      <!-- Question 14 -->
         <p>14.	Do you believe you have been given an overview of your career path and progress in this organization ?</p>
         <input
         type="text"
@@ -219,6 +259,8 @@
         value=""
         placeholder="Type Here"
       />
+
+      <!-- Question 15 -->
         <p>15.	Where do you see yourself 5 years from now ?</p>
         <input
         type="text"
@@ -226,6 +268,8 @@
         name="qn15"
         value=""
         placeholder="Type Here"/>
+
+        <!-- Question 16 -->
         <p>16.	 What value addition/contribution do you think you can give C-DAC after your employment here ?</p>
         <input
         type="text"
@@ -233,8 +277,10 @@
         name="qn16"
         value=""
         placeholder="Type Here"/>
+
+        <!-- Question 17 -->
       <p>17.	Would you recommend working in C-DAC to your friends ?</p>
-      <!-- <form action=""> -->
+      
         <input type="radio" id="myradio" name="recommend" value="yes">
         <label for="myradio">a. Yes</label>
         <br>
@@ -243,7 +289,7 @@
         <br>
         <input type="radio" id="myradio3" name="recommend" value="maybe">
         <label for="myradio3">c. May Be</label>
-      <!-- </form> --> <br>
+       <br>
         <label for="Please specify">Please specify</label>
         <input
           type="text"
@@ -251,12 +297,14 @@
           name="specify1"
           value="" placeholder="Type Here"/>
 
+          <!-- Question 18 -->
         <p>18.	Notes of Head HR :</p>
         <textarea name="HRnote" id="question-18" type="text" placeholder=" NOTES:  " rows="10" cols="97"></textarea>
-      <!-- </form> -->
+      
   <br><br>
+
+  <!-- Interviewer information -->
   <h2><u>Interview taken by -</u></h2>
-  <!-- <form class="Interview"> -->
     <label>Name:</label>
     <input
     type="text"
@@ -275,6 +323,7 @@
   <input
   type="date" id="intvdate" name="intvdate" value=""/>
   
+  <!-- Submit button -->
   <input type="submit" value="Submit" class="button" name="submit">
       </form>
     </div>
